@@ -23,6 +23,7 @@ Some next steps for this project include:
 * Converting the schedule from a list view into a table format with 3 columns (for times-similar to a classic online schedule, titles and locations) to further organize the information and improve readability. 
 * Add icons for event tags (ie. food, logistics, etc).
 * Add more animations (interesting ones similar to the gears on the Hack the North 2017 website, and a circular progress bar for the countdown timer).
+* Transfer the personal schedule to a new page.
 * Improve the background by using various Hack the North wallpapers that align with the colour scheme.
 * Cleaning up the code and improving efficiency.
 
