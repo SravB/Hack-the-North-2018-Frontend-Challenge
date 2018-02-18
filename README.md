@@ -5,7 +5,7 @@ Hack the North 2018 Frontend Challenge made using HTML/CSS and JavaScript(jQuery
 
 ## How To Use this WebApp
 
-Simply clone the repo then open the HTML file with the browser of your choice. CLick on the buttons on the nav bar to jump to a certain section. In the schedule section, hover on an item to see it's description (if there's any given) and click on an item to add it to your personal schedule. In the personal schedule section, hover to check an item's description and click to delete an item from your personal schedule. 
+Simply clone the repo then open the HTML file with the browser of your choice. CLick on the buttons on the nav bar to jump to a certain section. In the schedule section, hover on an item to see it's description (if there's any given) and click on an item to add it to your personal schedule. You can also search for events based on their title or tags using the search bar. In the personal schedule section, hover to check an item's description and click to delete an item from your personal schedule. 
 
 
 ## UX/UI Design
@@ -25,8 +25,13 @@ Some next steps for this project include:
 * Add more animations (interesting ones similar to the gears on the Hack the North 2017 website, and a circular progress bar for the countdown timer).
 * Improve the background by using various Hack the North wallpapers that align with the colour scheme.
 
+
 ## Some Useful Features that Could Be Implemented in the Future
 
+* Leading off of the example given about specific directions for each hacker throughout the hackathon (creating a build-your-own-adventure theme) we can aggregate all the travel data to find which routes on campus are the busiest at certain times so at peak times we can locate exactly which areas of campus to focus volunteer/organizer efforts to guide hackers to their destination.
+* Also stemming from the example, we can include times and alerts to leave for an event given the hacker's location and expected travel time (which can be queried from Google Maps API). 
+* We can also suggest similar events for empty time slots on a hacker's personal schedule (similar to YouTube suggesting similar videos).
+* Can also create a list of events and after implementing a friend feature like Facebook (where you can add your teammates/other friends at Hack the North) you can see which other friends are going to the same event. We can also potentially use these for a teammate tracker so you'll know exactly where your teammates are so you won't get lost.
 
 
 ## Using Performance Metrics
