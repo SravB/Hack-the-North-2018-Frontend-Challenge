@@ -5,7 +5,7 @@ Hack the North 2018 Frontend Challenge made using HTML/CSS and JavaScript(jQuery
 
 ## How To Use this WebApp
 
-Simply clone the repo (and star if you're feeling friendly) then open the HTML file with the browser of your choice.
+Simply clone the repo then open the HTML file with the browser of your choice.
 
 
 ## Next Steps
