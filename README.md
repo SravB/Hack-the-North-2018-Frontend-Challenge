@@ -24,6 +24,7 @@ Some next steps for this project include:
 * Add icons for event tags (ie. food, logistics, etc).
 * Add more animations (interesting ones similar to the gears on the Hack the North 2017 website, and a circular progress bar for the countdown timer).
 * Improve the background by using various Hack the North wallpapers that align with the colour scheme.
+* Cleaning up the code and improving efficiency.
 
 
 ## Some Useful Features that Could Be Implemented in the Future
