@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 
-<!-- TODO
-ADD ICON -->
-
 <html>
 <head>
 
@@ -33,8 +30,7 @@ ADD ICON -->
 
 <!-- Header -->
 <header id = "Home" class="w3-container w3-center" style="padding:512px 16px">
-  <!--<h1 class="w3-margin"></h1>
-  <h3></h3> -->
+
 </header>
 
 
@@ -397,8 +393,10 @@ $(document).ready(function(){
 								var k = 0;
 								
 								for (var index = 0; index < myEvents.length; index++) {
-									k = index;
-									break;
+									if (myEvents[index].id+'-2' == this.id) {
+										k = index;
+										break;
+									}
 								}
 								
 								myEvents.splice(k,1);
