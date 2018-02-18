@@ -17,9 +17,11 @@ My goal for this web app was to create a simple yet aesthetic design which I aim
 
 Overall, I'm pleased with the progress I have made with this project in such a short amount of time. I completed this project in between studying for midterms and preparing for interviews so I definitely didn't have as much time as I would've liked to complete this project. On the other hand, completing this project amidst a ferocious sea of midterms and interviews push me to dissect problems and complete subgoals much more quickly and effectively.
 
+If given more time, I would use cookies to store the user's saved events so that they are not wiped during a refresh. This would be done simply by storing a JSON array with the saved events.
+
 Some next steps for this project include: 
 * Converting the schedule from a list view into a table format with 3 columns (for times-similar to a classic online schedule, titles and locations) to further organize the information and improve readability. 
-* Add icons for event tags (ie. food, logistics, etc.).
+* Add icons for event tags (ie. food, logistics, etc).
 * Add more animations (interesting ones similar to the gears on the Hack the North 2017 website, and a circular progress bar for the countdown timer).
 * Improve the background by using various Hack the North wallpapers that align with the colour scheme.
 
@@ -29,5 +31,5 @@ Some next steps for this project include:
 
 ## Using Performance Metrics
 
-
+Some possible performance metrics that could be implemented could keep track of the number of people that add an event to their personal schedule and the number of searches for titles/tags to see which are most popular and focus on these initiatives in the future. Also, depending on how early the majority of users add events to their personal schedule - the organizing team can anticipate major fluctuations (if they are early enough) in popularity of events so that resources (food, chairs, etc) are allocately accordingly. 
 
