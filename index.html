@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<!-- TODO
+ADD ICON -->
+
+<html>
+<head>
+
+<title>Hack the North</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card-2 w3-right-align w3-large">
+    
+    <a href="#Home" class="w3-bar-item w3-button w3-padding-large w3-hover-black" style = "font-family: Raleway;">Home</a>
+    <a href="#Timer" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black" style = "font-family: Raleway;">Timer</a>
+	<a href="#Schedule" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black" style = "font-family: Raleway;">Schedule</a>
+	<a href="#Personal-Schedule" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black" style = "font-family: Raleway;">Personal Schedule</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header id = "Home" class="w3-container w3-center" style="padding:512px 16px">
+  <!--<h1 class="w3-margin"></h1>
+  <h3></h3> -->
+</header>
+
+
+<div id = "Timer" class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+  <h2>Countdown Timer</h2>
+	<div id="clock">
+	<div>
+		<span class="hours"></span>
+		<span>:</span>
+		<span class="minutes"></span>
+		<span>:</span>
+		<span class="seconds"></span>
+	</div>
+	</div>
+  </div>
+</div>
+
+
+<div id = "Schedule" class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+  <h2>Schedule</h2>
+	<div style = "font-family: Raleway; font-size: 16px; margin-top: 20px; margin-bottom: 32px;"> Hover for details. </div>
+	<div style = "font-family: Raleway; font-size: 16px; margin-top: 20px; margin-bottom: 32px;"> Click on an event to add it to your personal schedule! </div>
+	<input type="text" id="myInput" onkeyup="myFunction()" placeholder=" Search by title or tags..." style = "font-family: Raleway; font-size: 16px; width: 50%; height: 100%; margin-bottom: 24px; border-radius: 3px;">
+	<div>
+	<div id = "schedule">
+	
+	</div>
+	</div>
+  </div>
+</div>
+
+
+<div id = "Personal-Schedule" class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+  <h2>Personal Schedule</h2>
+	<div style = "font-family: Raleway; font-size: 16px; margin-top: 20px; margin-bottom: 32px;"> Click on an event to delete it from your personal schedule. </div>
+	<div id = "personal schedule">
+	
+	</div>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-center w3-opacity">
+ <p>&copy Sourav Biswas 2018.</p>
+</footer>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+var myArr = [];
+var myEvents = [];
+$(document).ready(function(){
+	
+	$.ajax({ 
+        type: 'GET', 
+        url: 'https://hackthenorth.com/fe-schedule.json', 
+		dataType: 'json',
+        success: function (data) { 
+			myArr = data;
+			
+			for (var i = 0; i < myArr.length; i++) {
+				
+				var timeStr = myArr[i].start_time;
+				var date = new Date(timeStr);
+				var day = date.getDate();
+				var month = date.getMonth()+1;
+				
+				if (month == 1) {
+					month = 'January';
+				} else if (month == 2) {
+					month = 'February';
+				} else if (month == 3) {
+					month = 'March';
+				} else if (month == 4) {
+					month = 'April';
+				} else if (month == 5) {
+					month = 'May';
+				} else if (month == 6) {
+					month = 'June';
+				} else if (month == 7) {
+					month = 'July';
+				} else if (month == 8) {
+					month = 'August';
+				} else if (month == 9) {
+					month = 'September';
+				} else if (month == 10) {
+					month = 'October';
+				} else if (month == 11) {
+					month = 'November';
+				} else {
+					month = 'December';
+				}
+				
+				var hour = date.getHours();
+				var minute = date.getMinutes();
+				var dateStr = month+" "+day + ", " + ('0' + hour).slice(-2) + ":" +('0' + minute).slice(-2);
+				
+				var timeStr = myArr[i].end_time;
+				var date2 = new Date(timeStr);
+				var day2 = date2.getDate();
+				var month2 = date2.getMonth()+1;
+				var hour2 = date2.getHours();
+				var minute2 = date2.getMinutes();
+				var dateStr2 = month+" "+day2 + ", " + ('0' + hour2).slice(-2) + ":" +('0' + minute2).slice(-2);
+				
+				var element = document.createElement("div");
+				
+				element.textContent = dateStr + ' to ' + dateStr2 + ' at ' + myArr[i].location + ' - ' + myArr[i].title;
+				element.setAttribute("id", myArr[i].id);
+				
+				var g = Math.round(-64*Math.cos(Math.abs(hour)*Math.PI/12) + parseInt('BF', 16)- 80).toString(16);
+				var b = Math.round(-64*Math.cos(Math.abs(hour)*Math.PI/12) + parseInt('FF', 16) - 80).toString(16);
+
+				
+				element.setAttribute("style", "font-family: Raleway; font-size: 16px; background-color: #00" + g + b + "; border: 1px solid white; border-radius: 5px; padding: 5px; padding-top: 10px; padding-bottom: 10px; margin: 5px; color: white;");
+				document.getElementById('schedule').appendChild(element);
+			}
+			
+			
+	
+			$.each(myArr,function(i,val){ 
+			
+				$("#"+myArr[i].id).mouseover(function(){ 
+					$("#"+myArr[i].id).css("background-color", "white");
+					$("#"+myArr[i].id).css("border-color", "black");
+					$("#"+myArr[i].id).css("color", "black");
+					$("#"+myArr[i].id).css("transition", "0.25s");
+					
+					if (myArr[i].description ) {
+						document.getElementById(myArr[i].id).innerHTML = myArr[i].description;
+					}
+					
+					
+								
+				});
+				
+				$("#"+myArr[i].id).mouseout(function(){ 
+					
+					var timeStr = myArr[i].start_time;
+					var date = new Date(timeStr);
+					var day = date.getDate();
+					var month = date.getMonth()+1;
+					
+					if (month == 1) {
+						month = 'January';
+					} else if (month == 2) {
+						month = 'February';
+					} else if (month == 3) {
+						month = 'March';
+					} else if (month == 4) {
+						month = 'April';
+					} else if (month == 5) {
+						month = 'May';
+					} else if (month == 6) {
+						month = 'June';
+					} else if (month == 7) {
+						month = 'July';
+					} else if (month == 8) {
+						month = 'August';
+					} else if (month == 9) {
+						month = 'September';
+					} else if (month == 10) {
+						month = 'October';
+					} else if (month == 11) {
+						month = 'November';
+					} else {
+						month = 'December';
+					}
+					
+					var hour = date.getHours();
+					var minute = date.getMinutes();
+					var dateStr = month+" "+day + ", " + ('0' + hour).slice(-2) + ":" +('0' + minute).slice(-2);
+					
+					var timeStr = myArr[i].end_time;
+					var date2 = new Date(timeStr);
+					var day2 = date2.getDate();
+					var month2 = date2.getMonth()+1;
+					var hour2 = date2.getHours();
+					var minute2 = date2.getMinutes();
+					var dateStr2 = month2+" "+day2 + ", " + ('0' + hour2).slice(-2) + ":" +('0' + minute2).slice(-2);
+					
+					document.getElementById(myArr[i].id).innerHTML = dateStr + ' to ' + dateStr2 + ' at ' + myArr[i].location + ' - ' + myArr[i].title;
+					
+					var g = Math.round(-64*Math.cos(Math.abs(hour)*Math.PI/12) + parseInt('BF', 16)- 80).toString(16);
+					var b = Math.round(-64*Math.cos(Math.abs(hour)*Math.PI/12) + parseInt('FF', 16) - 80).toString(16);
+							
+					$("#"+myArr[i].id).css("background-color", "#00" + g + b);
+					$("#"+myArr[i].id).css("border-color", "");
+					$("#"+myArr[i].id).css("color", "white");
+					$("#"+myArr[i].id).css("transition", "0.25s");
+				});
+				
+				$("#"+myArr[i].id).click(function(){ 
+					
+					
+					if (!myEvents.includes(myArr[i])) {
+					
+						myEvents.push(myArr[i]);
+						
+						function compare(a,b) {
+							if (a.start_time > b.start_time) {
+								return 1;
+							}
+							return 0;
+						}
+						
+						myEvents.sort(compare);
+						
+						var myNode = document.getElementById("personal schedule");
+						myNode.innerHTML = '';
+						
+						for (var j = 0; j < myEvents.length; j++) {
+							var timeStr = myEvents[j].start_time;
+							var date = new Date(timeStr);
+							var day = date.getDate();
+							var month = date.getMonth()+1;
+							
+							if (month == 1) {
+								month = 'January';
+							} else if (month == 2) {
+								month = 'February';
+							} else if (month == 3) {
+								month = 'March';
+							} else if (month == 4) {
+								month = 'April';
+							} else if (month == 5) {
+								month = 'May';
+							} else if (month == 6) {
+								month = 'June';
+							} else if (month == 7) {
+								month = 'July';
+							} else if (month == 8) {
+								month = 'August';
+							} else if (month == 9) {
+								month = 'September';
+							} else if (month == 10) {
+								month = 'October';
+							} else if (month == 11) {
+								month = 'November';
+							} else {
+								month = 'December';
+							}
+							
+							var hour = date.getHours();
+							var minute = date.getMinutes();
+							var dateStr = month+" "+day + ", " + ('0' + hour).slice(-2) + ":" +('0' + minute).slice(-2);
+							
+							var timeStr = myEvents[j].end_time;
+							var date2 = new Date(timeStr);
+							var day2 = date2.getDate();
+							var month2 = date2.getMonth()+1;
+							var hour2 = date2.getHours();
+							var minute2 = date2.getMinutes();
+							var dateStr2 = month2+" "+day2 + ", " + ('0' + hour2).slice(-2) + ":" +('0' + minute2).slice(-2);
+							
+							var element = document.createElement("div");
+							
+										
+							var g = Math.round(-64*Math.cos(Math.abs(hour)*Math.PI/12) + parseInt('BF', 16)- 80).toString(16);
+							var b = Math.round(-64*Math.cos(Math.abs(hour)*Math.PI/12) + parseInt('FF', 16) - 80).toString(16);
+				
+							element.textContent = dateStr + ' to ' + dateStr2 + ' at ' + myEvents[j].location + ' - ' + myEvents[j].title;
+							element.setAttribute("id", myEvents[j].id + '-2');
+							element.setAttribute("style", "font-family: Raleway; font-size: 16px; background-color: #00" + g + b + "; border: 1px solid white; border-radius: 5px; padding: 5px; padding-top: 10px; padding-bottom: 10px; margin: 5px; color: white;");
+							document.getElementById('personal schedule').appendChild(element);
+							
+							
+						}
+						
+						$.each(myEvents.reverse(),function(k,val){ 
+
+							$("#"+this.id+'-2').mouseover(function(){ 
+								
+								for (var j = 0; j < myEvents.length; j++) {
+									if (this.id == myEvents[j].id+'-2') {
+										if (myEvents[j].description ) {
+											document.getElementById(this.id).innerHTML = myEvents[j].description;
+										}
+									}
+								}
+								
+								$("#"+this.id).css("background-color", "white");
+								$("#"+this.id).css("border-color", "black");
+								$("#"+this.id).css("color", "black");
+								$("#"+this.id).css("transition", "0.25s");
+							});
+							
+							$("#"+this.id+'-2').mouseout(function(){ 
+								
+								var hour = 0;
+								
+								for (var j = 0; j < myEvents.length; j++) {
+									if (this.id == myEvents[j].id+'-2') {
+										var timeStr = myEvents[j].start_time;
+										var date = new Date(timeStr);
+										var day = date.getDate();
+										var month = date.getMonth()+1;
+										
+										if (month == 1) {
+											month = 'January';
+										} else if (month == 2) {
+											month = 'February';
+										} else if (month == 3) {
+											month = 'March';
+										} else if (month == 4) {
+											month = 'April';
+										} else if (month == 5) {
+											month = 'May';
+										} else if (month == 6) {
+											month = 'June';
+										} else if (month == 7) {
+											month = 'July';
+										} else if (month == 8) {
+											month = 'August';
+										} else if (month == 9) {
+											month = 'September';
+										} else if (month == 10) {
+											month = 'October';
+										} else if (month == 11) {
+											month = 'November';
+										} else {
+											month = 'December';
+										}
+										
+										hour = date.getHours();
+										var minute = date.getMinutes();
+										var dateStr = month+" "+day + ", " + ('0' + hour).slice(-2) + ":" +('0' + minute).slice(-2);
+										
+										var timeStr = myEvents[j].end_time;
+										var date2 = new Date(timeStr);
+										var day2 = date2.getDate();
+										var month2 = date2.getMonth()+1;
+										var hour2 = date2.getHours();
+										var minute2 = date2.getMinutes();
+										var dateStr2 = month2+" "+day2 + ", " + ('0' + hour2).slice(-2) + ":" +('0' + minute2).slice(-2);
+									
+										
+										document.getElementById(this.id).innerHTML = dateStr + ' to ' + dateStr2 + ' at ' + myEvents[j].location + ' - ' + myEvents[j].title;
+										
+										break;
+									}
+								}
+						
+								var g = Math.round(-64*Math.cos(Math.abs(hour)*Math.PI/12) + parseInt('BF', 16)- 80).toString(16);
+								var b = Math.round(-64*Math.cos(Math.abs(hour)*Math.PI/12) + parseInt('FF', 16) - 80).toString(16);
+								
+								$("#"+this.id).css("background-color", "#00" + g + b);
+								$("#"+this.id).css("color", "white");
+								$("#"+this.id).css("border-color", "");
+								$("#"+this.id).css("transition", "0.25s");
+							});
+							
+							$("#"+this.id+'-2').click(function(){ 
+							
+								var k = 0;
+								
+								for (var index = 0; index < myEvents.length; index++) {
+									k = index;
+									break;
+								}
+								
+								myEvents.splice(k,1);
+								this.style.display = "none";
+
+							});
+							
+						})
+			
+					}
+				});
+			})	
+        }
+    });
+	
+	
+			
+	// Add smooth scrolling to all links
+	$("a").on('click', function(event) {
+
+	// Make sure this.hash has a value before overriding default behavior
+	if (this.hash !== "") {
+	  // Prevent default anchor click behavior
+	  event.preventDefault();
+
+	  // Store hash
+	  var hash = this.hash;
+
+	  // Using jQuery's animate() method to add smooth page scroll
+	  // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+	  $('html, body').animate({
+		scrollTop: $(hash).offset().top
+	  }, 800, function(){
+
+		// Add hash (#) to URL when done scrolling (default click behavior)
+		window.location.hash = hash;
+	  });
+	} // End if
+	});
+  
+  
+	function getTimeRemaining(endtime) {
+	
+		var t = Date.parse(endtime) - Date.parse(new Date());
+		var seconds = Math.floor(t / 1000) % 60;
+		var minutes = Math.floor(t / 1000 / 60) % 60;
+		var hours = Math.floor(t / (1000 * 60 * 60)) % 24;
+		return {
+			'total': t,
+			'hours': hours,
+			'minutes': minutes,
+			'seconds': seconds
+			};
+	}
+
+	function initializeClock(id, endtime) {
+	
+		var clock = document.getElementById(id);
+		var hoursSpan = clock.querySelector('.hours');
+		var minutesSpan = clock.querySelector('.minutes');
+		var secondsSpan = clock.querySelector('.seconds');
+
+		
+		function updateClock() {
+		
+			var t = getTimeRemaining(endtime);
+
+			hoursSpan.innerHTML = t.hours;
+			minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+			secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+			if (t.total <= 0) {
+			  timeinterval = clearInterval(timeinterval);
+			}
+		}
+
+		updateClock();
+		var timeinterval = setInterval(updateClock, 1000);
+	}
+
+	var deadline = new Date(Date.parse(new Date()) + 2 * 60 * 60 * 1000);
+	initializeClock('clock', deadline);
+
+});
+
+
+			
+function myFunction() {
+
+	var input, filter;
+	input = document.getElementById("myInput");
+	filter = input.value.toUpperCase();
+
+	$('#schedule').children('div').each(function () {
+		
+		var text = this.textContent || this.innerText;
+		text = text.toUpperCase();
+
+		var id = this.id;
+		var i = 0;
+		for (var i = 0; i < myArr.length; i++) {
+			if (myArr[i].id == id) {
+				break;
+			}
+		}
+
+		if (text.slice(text.indexOf('-') + 2,text.indexOf('-') + 2 + filter.length) == filter) {
+			this.style.display = "";
+		} else {
+			var check = false;
+			for (var j = 0; j < myArr[i].tags.length; j++) {
+				if (myArr[i].tags[j].slice(0,filter.length).toUpperCase() == filter) {
+					check = true;
+					break;
+				}
+			}
+			
+			if (check) {
+				this.style.display = "";
+			} else {
+				this.style.display = "none";
+			}
+		}
+		
+	});
+	
+}
+
+
+</script>
+</html>

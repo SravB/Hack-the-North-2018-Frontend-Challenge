@@ -1,0 +1,134 @@
+header {
+	background-image: url("images/Hack-The-North.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+svg circle {
+  stroke-dasharray: 113px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: round;
+  stroke-width: 2px;
+  stroke: black;
+  fill: none;
+  animation: countdown 100s linear infinite forwards;
+}
+
+body{
+	text-align: center;
+	background: #fff;
+	//background: #00ECB9;
+	font-family: sans-serif;
+	font-weight: 100;
+}
+
+#clock {
+	font-family: Raleway;
+	color: #000;
+	display: inline-block;
+	font-weight: 100;
+	text-align: center;
+	font-size: 60px;
+}
+
+#clock > div {
+	padding: 5px;
+	border-radius: 3px;
+	//background: #00BF96;
+	display: inline-block;
+}
+
+#clock div > span {
+	padding: 5px;
+	border-radius: 3px;
+	//background: #00816A;
+	display: inline-block;
+}
+
+
+
+h1 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 70px;
+	text-align: center;
+	padding-top: 25px;
+	color: black;
+}
+
+h2 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: bold;
+	font-size: 30px;
+	text-align: center;
+	color: black;
+}
+
+h3 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: bold;
+	font-size: 40px;
+	text-align: center;
+	padding-top: 350px;
+	color: black;
+}
+
+h4 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: bold;
+	font-size: 25px;
+	text-align: center;
+	padding-top: 48px;
+	color: black;
+}
+
+h5 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 20px;
+	text-align: center;
+	padding-top: 25px;
+	color: black;
+}
+
+i {
+	font-family: 'Raleway', sans-serif;
+	font-size: 30px;
+	text-align: center;
+	margin: 8px;
+	color: dark gray;
+	line-height: 40px;
+}
+
+.p1 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 20px;
+	text-align: center;
+	margin-top: 16px;
+	margin-bottom: 16px;
+	line-height: 40px;
+}
+
+.italic {
+	font-weight: italic;
+	text-align: center;
+}
+
+p {
+	font-family: 'Raleway', sans-serif;
+	font-size: 18px;
+	text-align: left-side;
+	margin-top: 64px;
+	margin-right: 64px;
+	margin-left: 64px;
+	margin-bottom: 32px;
+}
+
+a {
+	transition-duration: 0.8s;
+	display: inline-block;
+}
+
+a:hover {
+	background-color: #FFFFFF;
+}
+
