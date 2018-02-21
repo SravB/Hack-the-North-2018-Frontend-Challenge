@@ -38,5 +38,5 @@ Some next steps for this project include:
 
 ## Using Performance Metrics
 
-Some possible performance metrics that could be implemented could keep track of the number of people that add an event to their personal schedule and the number of searches for titles/tags to see which are most popular and focus on these initiatives in the future. Also, depending on how early the majority of users add events to their personal schedule - the organizing team can anticipate major fluctuations (if they are early enough) in popularity of events so that resources (food, chairs, etc) are allocately accordingly. 
+Some possible performance metrics that could be implemented could keep track of the number of people that add an event to their personal schedule and the number of searches for titles/tags to see which are most popular and focus on these initiatives in the future. Also, depending on how early the majority of users add events to their personal schedule - the organizing team can anticipate major fluctuations (if they are early enough) in popularity of events so that resources (food, chairs, etc) are allocated accordingly. 
 
